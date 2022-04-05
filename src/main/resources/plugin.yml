@@ -1,6 +1,9 @@
-name: MineBlockDeathLostMoney
+name: MineBlockDeathLost
 version: 1.0
-main: org.mineblock.deathlostmoney.main
+main: org.mineblock.deathlost.main
+author: MineBlock Team.
+prefix: MineBlockPlugin
+api-version: 1.13
+website: www.mineblock.cc
 depend:
   - Vault
-api-version: 1.13

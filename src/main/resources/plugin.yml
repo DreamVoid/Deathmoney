@@ -1,15 +1,6 @@
-name: Deathmoney
-version: 0.4
-main: com.imyvm.spigot.plugin.main.PluginMain
-depend: [Vault]
+name: MineBlockDeathLostMoney
+version: 1.0
+main: org.mineblock.deathlostmoney.main
+depend:
+  - Vault
 api-version: 1.13
-
-commands:
-  deathmoney:
-    description: /deathmoney reload
-    aliases: []
-permissions:
-  deathmoney.*:
-    children:
-      deathmoney.reload: true
-      deathmoney.bypass: true

@@ -1,9 +1,4 @@
-# Deathmoney
-[![Build Status](https://travis-ci.com/ImyvmCircle/Deathmoney.svg?branch=master)](https://travis-ci.com/ImyvmCircle/Deathmoney)
+# MineBlockDeathLostMoney
+MineBlock 死亡损失硬币插件
 
-a very lightweight plugin for imyvm
-* Customisable world
-* Customisable money percent
-* Customisable min amount to lose
-* Customisable max amount to lose
-* Customisable message color
+基于项目[Deathmoney](https://github.com/ImyvmCircle/Deathmoney)修改，以 GPL v3 协议开源。

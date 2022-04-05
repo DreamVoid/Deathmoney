@@ -4,122 +4,14 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <!-- The Basics -->
-    <groupId>com.imyvm.Deathmoney</groupId>
-    <artifactId>Deathmoney</artifactId>
-    <version>0.1-SNAPSHOT</version>
-    <dependencies>
-        <!--Vault-->
-        <dependency>
-            <groupId>net.milkbowl.vault</groupId>
-            <artifactId>VaultAPI</artifactId>
-            <version>1.7</version>
-            <scope>provided</scope>
-        </dependency>
-        <!--Spigot API-->
-        <dependency>
-            <groupId>org.spigotmc</groupId>
-            <artifactId>spigot-api</artifactId>
-            <version>1.13-R0.1-SNAPSHOT</version>
-            <scope>provided</scope>
-        </dependency>
-        <!--Bukkit API-->
-        <dependency>
-            <groupId>org.bukkit</groupId>
-            <artifactId>bukkit</artifactId>
-            <version>1.13-R0.1-SNAPSHOT</version>
-            <scope>provided</scope>
-        </dependency>
-    </dependencies>
-
-    <!-- Build Settings -->
-    <build>
-        <directory>${project.basedir}/target</directory>
-        <outputDirectory>${project.build.directory}/classes</outputDirectory>
-        <finalName>${project.artifactId}-${project.version}</finalName>
-        <testOutputDirectory>${project.build.directory}/test-classes</testOutputDirectory>
-        <sourceDirectory>${project.basedir}/src/main/java</sourceDirectory>
-        <testSourceDirectory>${project.basedir}/src/test/java</testSourceDirectory>
-        <resources>
-            <resource>
-                <directory>${project.basedir}/src/main/resources</directory>
-            </resource>
-        </resources>
-        <testResources>
-            <testResource>
-                <directory>${project.basedir}/src/test/resources</directory>
-            </testResource>
-        </testResources>
-        <defaultGoal>clean install</defaultGoal>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.7.0</version>
-                <configuration>
-                    <source>1.8</source>
-                    <target>1.8</target>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-source-plugin</artifactId>
-                <version>3.0.1</version>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-javadoc-plugin</artifactId>
-                <version>3.0.1</version>
-                <configuration>
-                    <show>public</show>
-                    <windowtitle>Deathmoney</windowtitle>
-                    <verbose>false</verbose>
-                    <author>true</author>
-                    <version>true</version>
-                    <linksource>true</linksource>
-                    <notimestamp>true</notimestamp>
-                    <bottom><![CDATA[<b>huangwang, 2018</b>]]></bottom>
-                    <reportOutputDirectory>${project.build.directory}</reportOutputDirectory>
-                    <destDir>javadoc-latest</destDir>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
-
-    <!-- More Project Information -->
-    <name>Deathmoney</name>
-    <description>loss money when death</description>
-    <url>https://github.com/ImyvmCircle/Deathmoney</url>
-    <inceptionYear>2017</inceptionYear>
-    <organization>
-        <name>Imyvm Minecraft Circle</name>
-        <url>https://imyvm.com</url>
-    </organization>
-
-    <!-- Environment Settings -->
-    <issueManagement>
-        <system>github</system>
-        <url>https://github.com/ImyvmCircle/Deathmoney/issues</url>
-    </issueManagement>
-    <ciManagement>
-        <system>Travis</system>
-        <url>https://travis-ci.com/ImyvmCircle/Deathmoney</url>
-        <notifiers>
-            <notifier>
-                <type>mail</type>
-                <sendOnError>true</sendOnError>
-                <sendOnFailure>true</sendOnFailure>
-                <sendOnSuccess>false</sendOnSuccess>
-                <sendOnWarning>false</sendOnWarning>
-                <configuration><address>huangwang1003@gmail.com</address></configuration>
-            </notifier>
-        </notifiers>
-    </ciManagement>
+    <groupId>org.mineblock</groupId>
+    <artifactId>MineBlockDeathLostMoney</artifactId>
+    <version>1.0</version>
 
     <repositories>
         <repository>
-            <id>vault-repo</id>
-            <url>http://nexus.hc.to/content/repositories/pub_releases</url>
+            <id>jitpack.io</id>
+            <url>https://jitpack.io</url>
         </repository>
         <repository>
             <id>spigot-repo</id>
@@ -127,4 +19,40 @@
         </repository>
     </repositories>
 
+    <dependencies>
+        <dependency>
+            <groupId>com.github.MilkBowl</groupId>
+            <artifactId>VaultAPI</artifactId>
+            <version>1.7</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.spigotmc</groupId>
+            <artifactId>spigot-api</artifactId>
+            <version>1.13.2-R0.1-SNAPSHOT</version>
+            <scope>provided</scope>
+        </dependency>
+    </dependencies>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>8</maven.compiler.source>
+        <maven.compiler.target>8</maven.compiler.target>
+    </properties>
+
+    <build>
+        <finalName>${project.artifactId}</finalName>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
+        <testResources>
+            <testResource>
+                <directory>src/test/resources</directory>
+                <filtering>true</filtering>
+            </testResource>
+        </testResources>
+    </build>
 </project>

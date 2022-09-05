@@ -1,9 +1,9 @@
-name: MineBlockDeathLost
+name: MineBlockDeathTweak
 version: 1.0
-main: org.mineblock.deathlost.main
+main: org.mineblock.deathtweak.MineBlockDeathTweak
 author: MineBlock Team.
 prefix: MineBlockPlugin
 api-version: 1.13
 website: www.mineblock.cc
-depend:
+softdepend:
   - Vault

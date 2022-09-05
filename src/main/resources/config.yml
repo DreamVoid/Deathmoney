@@ -1,0 +1,50 @@
+player:
+  lost-money: true
+  lost-vanishing-curse-item: true
+entity:
+  mob-drop-money: true
+  mob-drop-money-min:
+    normal: 1
+    rare: 10
+    boss: 100
+  mob-drop-money-max:
+    normal: 2
+    rare: 20
+    boss: 500
+  mob-type:
+    normal:
+      - BAT
+      - BLAZE
+      - CAVE_SPIDER
+      - CREEPER
+      - ENDERMAN
+      - HOGLIN
+      - HUSK
+      - PHANTOM
+      - PIGLIN
+      - SHULKER
+      - SILVERFISH
+      - SKELETON
+      - SLIME
+      - SPIDER
+      - STRAY
+      - WITCH
+      - ZOMBIE
+      - ZOMBIE_VILLAGER
+      - ZOMBIFIED_PIGLIN
+    rare:
+      - ELDER_GUARDIAN
+      - ENDERMITE
+      - EVOKER
+      - GHAST
+      - GUARDIAN
+      - ILLUSIONER
+      - PIGLIN_BRUTE
+      - PILLAGER
+      - RAVAGER
+      - VEX
+      - VINDICATOR
+      - ZOGLIN
+    boss:
+      - ENDER_DRAGON
+      - WITHER

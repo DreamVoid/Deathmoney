@@ -28,6 +28,12 @@ public class PlayerDeathListener implements Listener {
 					MineBlockDeathTweak.economy.withdrawPlayer(player, lost);
 					player.sendMessage(ChatColor.translateAlternateColorCodes('&', "&c你因为死亡损失了" + df.format(lost) + "硬币！"));
 				}
+
+				if(player.getLevel() >= 1){
+					int lossLevel = player.getLevel() / 2;
+					player.setLevel(player.getLevel() - lossLevel);
+					player.sendMessage(ChatColor.translateAlternateColorCodes('&', "&c你因为死亡损失了" + lossLevel + "级经验！"));
+				}
 			}
 		}
 

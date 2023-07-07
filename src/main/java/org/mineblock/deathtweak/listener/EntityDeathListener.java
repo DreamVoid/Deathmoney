@@ -11,7 +11,9 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDeathEvent;
 import org.bukkit.event.entity.EntityPickupItemEvent;
+import org.bukkit.event.entity.ItemMergeEvent;
 import org.bukkit.event.entity.ItemSpawnEvent;
+import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryPickupItemEvent;
 import org.bukkit.event.inventory.InventoryType;
 import org.bukkit.inventory.ItemStack;
@@ -60,7 +62,7 @@ public class EntityDeathListener implements Listener {
             Money = Utils.getMinMax(config.getInt("min.boss",100),config.getInt("max.boss",500));
         }
         if (Money != 0) {
-            ItemStack itemstack = new ItemStack(Material.GOLD_INGOT);
+            ItemStack itemstack = new ItemStack(Material.GOLD_NUGGET);
             ItemMeta itemmeta = itemstack.getItemMeta();
             assert itemmeta != null;
             itemmeta.setDisplayName(ChatColor.stripColor("${money}".replace("{money}", Utils.format(Money)).replace(".", ",")));
@@ -109,6 +111,35 @@ public class EntityDeathListener implements Listener {
     @EventHandler
     public void onInventoryPickupByHopper(InventoryPickupItemEvent event) {
         if (event.getInventory().getType().equals(InventoryType.HOPPER) && event.getItem().getItemStack().getItemMeta() != null && event.getItem().getItemStack().getItemMeta().getLore() != null && event.getItem().getItemStack().getItemMeta().getLore().contains("MobKillMoney")) {
+            event.setCancelled(true);
+        }
+    }
+
+    @EventHandler
+    public void onInventoryClick(InventoryClickEvent e){
+        if(e.isCancelled()) return;
+        ItemStack itemStack = e.getCurrentItem();
+        Player player = (Player) e.getWhoClicked();
+        if(itemStack != null && (Objects.nonNull(itemStack.getItemMeta()) && itemStack.getItemMeta().getLore() != null)){
+            if (!itemStack.getItemMeta().getLore().contains("MobKillMoney")) return;
+
+            ItemMeta itemMeta = itemStack.getItemMeta();
+            itemMeta.setDisplayName(itemStack.getItemMeta().getDisplayName().replace(".", ",").replace(",", ""));
+            itemStack.setItemMeta(itemMeta);
+            String string = itemStack.getItemMeta().getDisplayName();
+            String money = Utils.getMoney(string);
+            MineBlockDeathTweak.economy.depositPlayer(player, Integer.parseInt(money) * itemStack.getAmount());
+            player.playSound(player.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 80.0F, 1.0F);
+            e.setCurrentItem(null);
+            e.setCancelled(true);
+        }
+    }
+
+    @EventHandler
+    public void onItemMerge(ItemMergeEvent event){
+        if (event.getEntity().getItemStack().getItemMeta() != null &&
+                event.getEntity().getItemStack().getItemMeta().getLore() != null &&
+                event.getEntity().getItemStack().getItemMeta().getLore().contains("MobKillMoney")) {
             event.setCancelled(true);
         }
     }

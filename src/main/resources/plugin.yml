@@ -7,3 +7,7 @@ api-version: 1.13
 website: www.mineblock.cc
 softdepend:
   - Vault
+permissions:
+  mineblock.allow.instantrespawn:
+    default: false
+    description: 允许快速重生
